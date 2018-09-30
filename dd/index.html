@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    	<script src="/javascripts/nmInclude.js"></script>
+		<script src="/javascripts/webcrabber.js"></script>
+    	<script src="/javascripts/firebase.js"></script>
+		<script> 
+			var src=[],lat=[],key=[],no=0;
+			fbsetup();
+		</script>
+		<script>
+            window.onload=function(){
+				cI();
+				layout();
+				//setTimeout(function(){cI();},1000);
+			}
+		  function cI(){
+			read("dd",b,[]);
+		  }
+		  function a(A){
+			var i=A[0],url=A[1];
+			var tar=$("#html");
+			var mode,list;
+			if(url.substr(12,2)=="qu")mode=0;else mode=1;
+			var img=tar.find("img")[0],name=$($("#info").find("h1")[0]).html(),p=$("#info").find("p");
+			var auth=$(p[0]).html(),update=$(p[2]).html(),newst=$($(p[3]).children("a")).html();
+			if(mode)$("#img"+i).attr("src",$(img).attr("src"));else $("#img"+i).attr("src","https://www.qu.la"+$(img).attr("src"));
+			$("#ninfo"+i).html("<h3>"+name+"</h3><p>"+auth+"<br>"+update+"<br>最新章节："+newst+"</p>");
+		  }
+		  function b(childKey,childData,A){
+			var i=no;
+			key.push(childKey);
+			src.push(childData.src);
+			lat.push(childData.lat);
+			block='\
+				<div class="block" style="height:180px">\
+					<div class="inline"><image class="inline" style="width:auto;height:180px" id="img'+no+'"></div>\
+					<div class="inline" style="margin-left:20px" id="ninfo'+no+'"><p style="font-size:30px">加载中。。。</p></div>\
+					<div style="display:inline;float:right" class="innerRight"><br><br><br><button id="con'+no+'">继续阅读</button><br><button id="menu'+no+'">目录</button><br><button id="del'+no+'">删除</button></div>\
+				</div>\
+			';
+			url=src[no];
+			$("#list").append(block);
+			$("#con"+no).attr("onclick","location.href='reading.html?url="+lat[no]+"'");
+			$("#menu"+no).attr("onclick","location.href='menu.html?url="+url+"'");
+			$("#del"+no).attr("onclick","del('dd','"+key[no]+"');location.reload();");
+			$("#menu"+no).attr("href","menu.html?url="+url);
+			getHTML(url,a,[no,url]);
+			no++;
+		  }
+        </script>
+    	<title>书架</title>
+	</head>
+	<body>
+	    <div class="center">
+	        <h1 id="heading">蛋蛋的书架</h1>
+        </div>
+		<div id="list">
+		</div>
+		<div style="display:none" id="html"></div>
+        <div style="height:20px"></div>
+    </body>
+</html>

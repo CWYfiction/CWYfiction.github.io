@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    	<script src="/javascripts/nmInclude.js"></script>
+    	<script src="/javascripts/webcrabber.js"></script>
+    	<script src="/javascripts/switch.js"></script>
+		<script src="/javascripts/firebase.js"></script>
+    	<script>
+			fbsetup();
+			
+			function a(A){
+				var tar=$("#html");
+				var name=tar.find("h1")[0],con=tar.find("#content");
+				$("#heading").html($(name).html());
+				$("#con").html(con.html());
+				var nav=tar.find(".bottem1")[0],prev=$(nav).find("a")[0],next=$(nav).find("a")[2],menu=$(nav).find("a")[1];
+				var a=$("#navig").find("a");
+				$(a[0]).attr("href","reading.html?url="+web+$(prev).attr("href"));
+				$(a[2]).attr("href","reading.html?url="+web+$(next).attr("href"));
+				$(a[1]).attr("href","menu.html?url="+web+$(menu).attr("href"));
+			}
+            window.onload=function(){
+				Type();
+				read("yy",b,[]);
+				getHTML(url,a,[]);
+				layout();
+			}
+			function b(childKey,chilyyata,A){
+				if(chilyyata.src==bookid)upd("yy",childKey,bookid,url);
+			}
+        </script>
+		<script>
+		</script>
+    	<title>Mathemedic</title>
+	</head>
+	<body>
+	    <div class="center">
+	        <h2 id="heading"></h2>
+        </div>
+		<div id="html" style="display:none"></div>
+		<div id="con" style="margin-top:30px;font-size:18px">
+			<p style="text-align:center;font-size:18px">加载中。。。</p>
+		</div>
+		<br><br>
+		<div id="navig" class="center" style="font-size:18px"><a style="margin:30px" href="/">上一章</a><a style="margin:30px">返回目录</a><a style="margin:30px">下一章</a></div>
+        <script>
+			$.ajaxPrefilter(function (options) {
+				if (options.crossDomain && jQuery.support.cors) {
+					var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
+					options.url = http + '//cors-anywhere.herokuapp.com/' + options.url;
+				}
+			});
+	    </script>
+    </body>
+</html>

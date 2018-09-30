@@ -1,0 +1,107 @@
+#heading{
+  animation-duration: 1s;
+  animation-name: slidein;
+  text-align: center;
+}
+
+*{
+	margin:0px;
+}
+  
+ @keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%; 
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  } 
+
+}
+
+#content {
+	margin-left: 40px;
+}
+
+.mdl-layout__container{
+	position: fixed;
+	left: 0px;
+}
+
+#header {
+	text-align: center;
+	position: relative;
+	top: 60px;
+	color: white; 
+}
+
+#small-header {
+	text-align: center;
+	position: relative;
+	top: 60px;
+	color: white; 
+	font-size: 32px;
+}
+
+#navbar {
+	background: #2196F3;
+}
+
+#title {
+	margin: 0px ;
+	position: relative;
+	bottom: 24px;
+	background: #2196F3;
+	height: 200px;
+}
+.subtitle{
+	margin-left: 40px;
+	color: #2196F3;
+}
+
+.main-content{
+	margin-left: 40px;
+	font-size: 26px;
+}
+
+#form {
+	position: relative;
+	left: 40px;
+}
+
+#number {
+	max-width: 30px;
+}
+
+#unknown1 {
+	position: absolute;
+	top: 55px;
+	left: 30px;
+}
+
+#unknown2 {
+	position: absolute;
+	top: 55px;
+	left: 50px;
+}
+h6.hide{
+	margin-top:0px;
+	margin-bottom:0px;
+}
+.blockInline{
+	display:block inline;
+}
+.center{
+	text-align:center;
+}
+.inline{
+	display:inline;
+	float:left;
+}
+.innerRight *{
+	float:right;
+	height:30px;
+	font-size:18px;
+}

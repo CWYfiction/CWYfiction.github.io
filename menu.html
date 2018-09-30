@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    	<script src="/javascripts/nmInclude.js"></script>
+    	<script src="/javascripts/webcrabber.js"></script>
+    	<script src="/javascripts/switch.js"></script>
+		<script>
+			var A;
+			var a=function(A){
+				var tar=$("#html");
+				var name=tar.find("h1")[0],ls=tar.find("#list"),li=$(ls).find("dd");
+				$("#heading").html($(name).html());
+				var list=$("#list"),now;
+					for(var i=0;i<li.length;i++){
+						now=$($(li[i]).find("a")[0]);
+						$(list).append("<li><a href='reading.html?url="+web+now.attr("href")+"'>"+now.html()+"</a></li>");
+						//alert("<li><a href='"+web+now.attr("href")+"'>"+now.html()+"</a></li>")
+					}
+			}
+            window.onload=function(){
+				Type();
+				getHTML(url,a,[]);
+				layout();
+			}
+        </script>
+    	<title>书架</title>
+	</head>
+	<body>
+	    <div class="center">
+	        <h1 id="heading">加载中。。。</h1>
+        </div>
+		<ul id="list" style="margin-left:40px">
+		</ul>
+		<div style="display:none" id="html"></div>
+        <div style="height:20px"></div>
+    </body>
+</html>
