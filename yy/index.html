@@ -28,15 +28,15 @@
 			if(mode)$("#img"+i).attr("src",$(img).attr("src"));else $("#img"+i).attr("src","https://www.qu.la"+$(img).attr("src"));
 			$("#ninfo"+i).html("<h3>"+name+"</h3><p>"+auth+"<br>"+update+"<br>最新章节："+newst+"</p>");
 		  }
-		  function b(childKey,chilyyata,A){
+		  function b(childKey,childData,A){
 			var i=no;
 			key.push(childKey);
-			src.push(chilyyata.src);
-			lat.push(chilyyata.lat);
+			src.push(childData.src);
+			lat.push(childData.lat);
 			block='\
-				<div class="block" style="height:180px">\
-					<div class="inline"><image class="inline" style="width:auto;height:180px" id="img'+no+'"></div>\
-					<div class="inline" style="margin-left:20px" id="ninfo'+no+'"><p style="font-size:30px">加载中。。。</p></div>\
+				<div style="width:100%;margin-bottom:180px">\
+					<div><image style="width:auto;height:180px" id="img'+no+'"></div>\
+					<div class="inline" style="margin-left:20px;width:300px" id="ninfo'+no+'"><p style="font-size:30px">加载中。。。</p></div>\
 					<div style="display:inline;float:right" class="innerRight"><br><br><br><button id="con'+no+'">继续阅读</button><br><button id="menu'+no+'">目录</button><br><button id="del'+no+'">删除</button></div>\
 				</div>\
 			';

@@ -17,6 +17,26 @@
 			function b(A){
 				$("#res").html(" ");
 				var res=$(".result-list").find(".result-item");
+				if(document.body.clientWidth<=500){
+					for(var i=0;i<res.length;i++){
+						var block='\
+						<div class="block "style="height:180px">\
+							<div class="inline"><image class="inline" style="width:auto;height:180px" id="img'+i+'" src="https://www.w3schools.com/html/pic_trulli.jpg"></div>\
+							<div style="display:inline;float:right" class="innerRight"><br><br><button id="try'+i+'">试读</button><br><button id="addTodd'+i+'">加入蛋蛋的书架</button><br><button id="addToyy'+i+'">加入陈伍洋的书架</button></div>\
+						</div>\
+						';
+						$("#res").append(block);
+						var tar=$(res[i]);
+						var url=$(tar.find("a")[1]).attr("href");
+						var img=tar.find("img")[0],name=$(tar.find("a")[1]).html(),p=tar.find(".result-game-item-info")[0];
+						$("#img"+i).attr("src",$(img).attr("src"));
+						$("#ninfo"+i).html($(p).html());
+						$("#try"+i).attr("onclick","location.href='menu.html?url="+url+"'");
+						$("#addTodd"+i).attr("onclick","add('dd','"+url.replace("http","https")+"')");
+						$("#addToyy"+i).attr("onclick","add('yy','"+url.replace("http","https")+"')");
+					}
+				}
+				else{
 				for(var i=0;i<res.length;i++){
 					var block='\
 					<div class="block" style="height:180px">\
@@ -34,7 +54,7 @@
 					$("#try"+i).attr("onclick","location.href='menu.html?url="+url+"'");
 					$("#addTodd"+i).attr("onclick","add('dd','"+url.replace("http","https")+"')");
 					$("#addToyy"+i).attr("onclick","add('yy','"+url.replace("http","https")+"')");
-				}
+				}}
 			}
         </script>
     	<title>Mathemedic</title>
